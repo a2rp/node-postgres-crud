@@ -1,0 +1,28 @@
+# create todo
+POST http://localhost:1198/todos
+Content-Type: application/json
+
+{
+    "description": "fourth todo"
+}
+
+### get all todos
+GET http://localhost:1198/todos
+
+### get a todo
+GET http://localhost:1198/todos/5
+
+### update a todo
+PUT http://localhost:1198/todos/8
+Content-Type: application/json
+
+{
+    "description": "eight todo updated"
+}
+
+### delete a todo
+DELETE http://localhost:1198/todos/8
+
+
+
+
