@@ -1,11 +1,14 @@
-const Pool = require("pg").Pool;
+const { Pool } = require("pg");
 
 const pool = new Pool({
-    user: "postgres",
-    password: "password",
-    database: "todo_database",
-    host: "localhost",
-    port: 5432
+    connectionString: process.env.DATABASE_URL,
+    connectionTimeoutMillis: 10000,
+    idleTimeoutMillis: 30000,
+    max: 10
+});
+
+pool.on("error", (error) => {
+    console.error("Unexpected PostgreSQL pool error:", error.code || error.name);
 });
 
 module.exports = pool;
